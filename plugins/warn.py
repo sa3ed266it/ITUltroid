@@ -42,7 +42,7 @@ async def warn(e):
         return
     if reply:
         user = reply.sender_id
-        reason = e.text[5:] if e.pattern_match.group(1).strip() else "unknown"
+        reason = e.text[5:] if e.pattern_match.group(1).strip() else ""
     else:
         try:
             user = e.text.split()[1]
@@ -89,7 +89,7 @@ async def warn(e):
         ok = await ultroid_bot.get_entity(user)
         user = inline_mention(ok)
         r = r.split("|$|")
-        text = f"User {user} Got {action} Due to {count+1} Warns.\n\n"
+        text = f"المستخدم : {user}\n تم {action}\n بسبب حصوله على {count+1} تحذير.\n\n"
         for x in range(c):
             text += f"•**{x+1}.** {r[x]}\n"
         await e.eor(text)
