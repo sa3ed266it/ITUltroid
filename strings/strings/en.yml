@@ -374,8 +374,8 @@ nightm_4: "Done, Removed Current Chat from Night Mode"
 nightm_5: "Something Went Wrong"
 
 # pmpermit
-pmperm_1: "Please wait for me to respond or you will be blocked and reported as spam!!"
-pmperm_2: "Eyy, I told you not to spam!\nYou've been blocked and reported, for now."
+pmperm_1: "❃ مرحبا {mention} \n❃ تم ارسال رسالتك بنجاح . \n❃ انتظر الرد حتى لا يتم حظرك من البوت."
+pmperm_2: "تم تحذيرك مسبقا .\n لقد تم حظرك من قبل البوت ."
 pmperm_3: "Reply to someone's message or try this command in private."
 
 # schedule_msg
