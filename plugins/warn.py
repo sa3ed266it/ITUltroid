@@ -19,8 +19,8 @@
 •`{i}setwarn <warn count> | <ban/mute/kick>`
    Set Number in warn count for warnings
    After putting " | " mark put action like ban/mute/kick
-   Its Default 3 kick
-   Example : `setwarn 5 | mute`
+   Its Default 3 mute
+   Example : `.setwarn 5 | mute`
 
 """
 
@@ -63,7 +63,7 @@ async def warn(e):
         x = udB.get_key("SETWARN")
         number, action = int(x.split()[0]), x.split()[1]
     except BaseException:
-        number, action = 3, "kick"
+        number, action = 3, "mute"
     if ("ban" or "kick" or "mute") not in action:
         action = "kick"
     if count + 1 >= number:
