@@ -175,7 +175,7 @@ if udB.get_key("PMSETTING"):
             if is_approved(miss.id):
                 return
             approve_user(miss.id)
-            await delete_pm_warn_msgs(miss.id)
+            await ultroid_bot.send_message("اهلا مطور السورس")(miss.id)
             try:
                 await ultroid_bot.edit_folder(miss.id, folder=0)
             except BaseException:
