@@ -63,21 +63,21 @@ async def warn(e):
         x = udB.get_key("SETWARN")
         number, action = int(x.split()[0]), x.split()[1]
     except BaseException:
-        number, action = 3, "mute"
-    if ("ban" or "kick" or "mute") not in action:
-        action = "mute"
+        number, action = 3, "كتمه"
+    if ("حظره" or "طرده" or "كتمه") not in action:
+        action = "كتمه"
     if count + 1 >= number:
-        if "ban" in action:
+        if "حظره" in action:
             try:
                 await ultroid_bot.edit_permissions(e.chat_id, user, view_messages=False)
             except BaseException:
                 return await e.eor("`Something Went Wrong.`", time=5)
-        elif "kick" in action:
+        elif "طرده" in action:
             try:
                 await ultroid_bot.kick_participant(e.chat_id, user)
             except BaseException:
                 return await e.eor("`Something Went Wrong.`", time=5)
-        elif "mute" in action:
+        elif "كتمه" in action:
             try:
                 await ultroid_bot.edit_permissions(
                     e.chat_id, user, until_date=None, send_messages=False
@@ -99,7 +99,7 @@ async def warn(e):
     user = inline_mention(ok)
     await eor(
         e,
-        f"**WARNING :** {count+1}/{number}\n**To :**{user}\n**Be Careful !!!**\n\n**Reason** : {reason}",
+        f"**عدد التحذيرات :** {count+1}/{number}\n**المستخدم :**{user}\n**خلى بالك بقا 🙂**\n\n**السبب** : {reason}",
     )
 
 
@@ -167,13 +167,13 @@ async def warnset(e):
     ok = e.pattern_match.group(1).strip()
     if not ok:
         return await e.eor("stuff")
-    if "|" in ok:
+    if "•" in ok:
         try:
             number, action = int(ok.split()[0]), ok.split()[1]
         except BaseException:
             return await e.eor(get_string("schdl_2"), time=5)
-        if ("ban" or "kick" or "mute") not in action:
-            return await e.eor("`Only mute / ban / kick option suported`", time=5)
+        if ("حظر" or "طرد" or "كتم") not in action:
+            return await e.eor("`Only كتم / حظر / طرد option suported`", time=5)
         udB.set_key("SETWARN", f"{number} {action}")
         await e.eor(f"Done Your Warn Count is now {number} and Action is {action}")
     else:
