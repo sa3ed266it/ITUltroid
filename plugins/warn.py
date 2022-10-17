@@ -56,7 +56,7 @@ async def warn(e):
         try:
             reason = e.text.split(maxsplit=2)[-1]
         except BaseException:
-            reason = "unknown"
+            reason = ""
     count, r = warns(e.chat_id, user)
     r = f"{r}|$|{reason}" if r else reason
     try:
@@ -65,7 +65,7 @@ async def warn(e):
     except BaseException:
         number, action = 3, "mute"
     if ("ban" or "kick" or "mute") not in action:
-        action = "kick"
+        action = "mute"
     if count + 1 >= number:
         if "ban" in action:
             try:
