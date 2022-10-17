@@ -42,7 +42,7 @@ async def warn(e):
         return
     if reply:
         user = reply.sender_id
-        reason = e.text[5:] if e.pattern_match.group(1).strip() else ""
+        reason = e.text[5:] if e.pattern_match.group(1).strip() else "unknown"
     else:
         try:
             user = e.text.split()[1]
