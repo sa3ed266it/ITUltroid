@@ -42,7 +42,7 @@ async def warn(e):
         return
     if reply:
         user = reply.sender_id
-        reason = e.text[5:] if e.pattern_match.group(1).strip() else "unknown"
+        reason = e.text[5:] if e.pattern_match.group(1).strip() else ""
     else:
         try:
             user = e.text.split()[1]
@@ -63,9 +63,9 @@ async def warn(e):
         x = udB.get_key("SETWARN")
         number, action = int(x.split()[0]), x.split()[1]
     except BaseException:
-        number, action = 3, "kick"
+        number, action = 3, "mute"
     if ("ban" or "kick" or "mute") not in action:
-        action = "kick"
+        action = "mute"
     if count + 1 >= number:
         if "ban" in action:
             try:
