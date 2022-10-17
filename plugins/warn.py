@@ -42,7 +42,7 @@ async def warn(e):
         return
     if reply:
         user = reply.sender_id
-        reason = e.text[5:] if e.pattern_match.group(1).strip() else ""
+        reason = e.text[5:] if e.pattern_match.group(1).strip() else "مفيش ."
     else:
         try:
             user = e.text.split()[1]
@@ -56,7 +56,7 @@ async def warn(e):
         try:
             reason = e.text.split(maxsplit=2)[-1]
         except BaseException:
-            reason = ""
+            reason = "مفيش ."
     count, r = warns(e.chat_id, user)
     r = f"{r}|$|{reason}" if r else reason
     try:
@@ -172,7 +172,7 @@ async def warnset(e):
             number, action = int(ok.split()[0]), ok.split()[1]
         except BaseException:
             return await e.eor(get_string("schdl_2"), time=5)
-        if ("حظر" or "طرد" or "كتم") not in action:
+        if ("حظره" or "طرده" or "كتمه") not in action:
             return await e.eor("`Only كتم / حظر / طرد option suported`", time=5)
         udB.set_key("SETWARN", f"{number} {action}")
         await e.eor(f"Done Your Warn Count is now {number} and Action is {action}")
