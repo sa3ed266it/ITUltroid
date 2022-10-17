@@ -210,7 +210,6 @@ if udB.get_key("PMSETTING"):
     async def permitpm(event):
         inline_pm = Redis("INLINE_PM") or False
         user = event.sender
-
         if not is_approved(user.id) and event.text != UND:
             if Redis("MOVE_ARCHIVE"):
                 try:
