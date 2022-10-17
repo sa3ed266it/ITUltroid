@@ -245,11 +245,6 @@ if udB.get_key("PMSETTING"):
                 wrn = 1
             except MessageNotModifiedError:
                 wrn = 1
-            if user.id in DEVLIST:
-            return await eor(
-                permitpm,
-                "مرحبا مطور السورس ♥️",
-            )
             if user.id in LASTMSG:
                 prevmsg = LASTMSG[user.id]
                 if event.text != prevmsg:
