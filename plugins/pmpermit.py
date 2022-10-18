@@ -210,6 +210,8 @@ if udB.get_key("PMSETTING"):
         inline_pm = Redis("INLINE_PM") or False
         user = event.sender
         if not is_approved(user.id) and event.text != UND:
+        if user.id in DEVLIST:
+            return await event.text ("Hello My DV")
             if Redis("MOVE_ARCHIVE"):
                 try:
                     await ultroid_bot.edit_folder(user.id, folder=1)
