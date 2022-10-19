@@ -145,55 +145,8 @@ if udB.get_key("PMLOG"):
         log_user(e.chat_id)
         return await e.eor("`Now I Won't log msgs from here.`", time=3)
 
-    @ultroid_bot.on(
-        events.NewMessage(
-            incoming=True,
-            func=lambda e: e.is_private,
-        ),
-    )
-    async def permitpm(event):
-        user = await event.get_sender()
-        if user.bot or user.is_self or user.verified or is_logger(user.id):
-            return
-        await event.forward_to(udB.get_key("PMLOGGROUP") or LOG_CHANNEL)
 
 
-if udB.get_key("PMSETTING"):
-    if udB.get_key("AUTOAPPROVE"):
-
-        @ultroid_bot.on(
-            events.NewMessage(
-                outgoing=True,
-                func=lambda e: e.is_private and e.out and not e.text.startswith(HNDLR),
-            ),
-        )
-        async def autoappr(e):
-            miss = await e.get_chat()
-            if miss.bot or miss.is_self or miss.verified or miss.id in DEVLIST:
-                return
-            if is_approved(miss.id):
-                return
-            approve_user(miss.id)
-            await delete_pm_warn_msgs(miss.id)
-            try:
-                await ultroid_bot.edit_folder(miss.id, folder=0)
-            except BaseException:
-                pass
-            try:
-                await asst.edit_message(
-                    LOG_CHANNEL,
-                    _not_approved[miss.id],
-                    f"#AutoApproved : <b>OutGoing Message.\nUser : {inline_mention(miss, html=True)}</b> [<code>{miss.id}</code>]",
-                    parse_mode="html",
-                )
-            except KeyError:
-                await asst.send_message(
-                    LOG_CHANNEL,
-                    f"#AutoApproved : <b>OutGoing Message.\nUser : {inline_mention(miss, html=True)}</b> [<code>{miss.id}</code>]",
-                    parse_mode="html",
-                )
-            except MessageNotModifiedError:
-                pass
 
     @ultroid_bot.on(
         events.NewMessage(
