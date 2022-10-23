@@ -11,11 +11,12 @@ from telethon.errors.rpcerrorlist import (
     BotResponseTimeoutError,
 )
 from telethon.tl.custom import Button
+from telethon import Button
 
 from pyUltroid.dB._core import HELP, LIST
 from pyUltroid.fns.tools import cmd_regex_replace
 
-from . import HNDLR, LOGS, OWNER_NAME, asst, get_string, inline_pic, udB, ultroid_cmd
+from . import HNDLR, LOGS, OWNER_NAME, asst, get_string, inline_pic, udB, ultroid_cmd, vc_asst, asst, in_pattern
 
 _main_help_menu = [
     [
@@ -134,3 +135,24 @@ async def _help(ult):
             return await ult.eor(get_string("help_3"))
         await results[0].click(chat.id, reply_to=ult.reply_to_msg_id, hide_via=True)
         await ult.delete()
+        
+@vc_asst("vchelp")
+async def helper(event):
+    res = await event.client.inline_query(asst.me.username, "vchelp")
+    try:
+        await res[0].click(event.chat_id)
+    except Exception as e:
+        await event.eor(e)
+
+
+@in_pattern("vchelp")
+async def wiqhshd(e):
+    builder = e.builder
+    res = [
+        await builder.article(
+            title="Vc Help",
+            text="**VCBot Help Menu**\n\n",
+            buttons=Button.inline("Voice Chat Help", data="uh_VCBot_"),
+        )
+    ]
+    await e.answer(res)
