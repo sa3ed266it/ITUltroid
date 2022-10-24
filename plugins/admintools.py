@@ -90,7 +90,7 @@ async def dmote(ult):
     if not rank:
         rank = "Not Admin"
     if not user:
-        return await xx.edit(get_string("de_1"))
+        return await eod(ult, get_string("de_1"))
     try:
         await ult.client.edit_admin(
             ult.chat_id,
@@ -164,7 +164,7 @@ async def uunban(ult):
     text = get_string("unban_3").format(inline_mention(user), sender, ult.chat.title)
     if reason:
         text += get_string("ban_5").format(reason)
-    await xx.edit(text)
+    await eor(text)
 
 
 @ultroid_cmd(
