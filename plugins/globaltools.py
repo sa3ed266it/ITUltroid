@@ -78,7 +78,7 @@ from ._inline import something
 _gpromote_rights = ChatAdminRights(
     add_admins=False,
     invite_users=True,
-    change_info=False,
+    change_info=True,
     ban_users=True,
     delete_messages=True,
     pin_messages=True,
@@ -107,7 +107,7 @@ async def _(e):
         key = "all"
         if len(ok) > 1 and (("group" in ok[1]) or ("channel" in ok[1])):
             key = ok[1]
-        rank = ok[2] if len(ok) > 2 else "AdMin"
+        rank = ok[2] if len(ok) > 2 else "Admin"
         c = 0
         user.id = user.peer_id.user_id if e.is_private else user.from_id.user_id
         async for x in e.client.iter_dialogs():
