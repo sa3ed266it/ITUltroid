@@ -47,7 +47,7 @@ async def prmte(ult):
     rank = rank or "Admin"
     FullRight = False
     if not user:
-        return await xx.edit(get_string("pro_1"))
+        return await eod(ult, get_string("pro_1"))
     if rank.split()[0] == "-f":
         try:
             rank = rank.split(maxsplit=1)[1]
