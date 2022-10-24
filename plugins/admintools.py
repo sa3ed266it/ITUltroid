@@ -63,6 +63,7 @@ async def prmte(ult):
             await ult.client.edit_admin(
                 ult.chat_id,
                 user.id,
+                change_info=True,
                 invite_users=True,
                 ban_users=True,
                 delete_messages=True,
@@ -95,6 +96,7 @@ async def dmote(ult):
         await ult.client.edit_admin(
             ult.chat_id,
             user.id,
+            change_info=None,
             invite_users=None,
             ban_users=None,
             delete_messages=None,
