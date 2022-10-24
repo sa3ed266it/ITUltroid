@@ -14,8 +14,6 @@ from telethon.tl.types import MessageEntityMentionName
 from . import *
 from . import LOGS
 
-LOGS = logging.getLogger(__name__)
-
 async def get_user_from_event(
     event,
     jmthonevent=None,
