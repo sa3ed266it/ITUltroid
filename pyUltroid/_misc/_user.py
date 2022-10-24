@@ -11,7 +11,8 @@ from telethon.tl.functions.messages import GetFullChatRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import MessageEntityMentionName
 
-from . import eod, LOGS
+from . import *
+from . import LOGS
 
 LOGS = logging.getLogger(__name__)
 
