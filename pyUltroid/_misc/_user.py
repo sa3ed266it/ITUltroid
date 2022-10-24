@@ -13,8 +13,6 @@ from telethon.tl.types import MessageEntityMentionName
 
 from . import *
 
-LOGS = logging.getLogger(__name__)
-
 async def get_user_from_event(
     event,
     jmthonevent=None,
@@ -49,33 +47,3 @@ async def get_user_from_event(
             if isinstance(user, int) or user.startswith("@"):
                 user_obj = await event.client.get_entity(user)
                 return user_obj, extra
-    except Exception as e:
-        LOGS.error(str(e))
-    try:
-        if nogroup is False:
-            if secondgroup:
-                extra = event.pattern_match.group(2)
-            else:
-                extra = event.pattern_match.group(1)
-        if event.is_private:
-            user_obj = await event.get_chat()
-            return user_obj, extra
-        if event.reply_to_msg_id:
-            previous_message = await event.get_reply_message()
-            if previous_message.from_id is None:
-                if not noedits:
-                    await edit_delete(jmthonevent, "- هذا الشخص مفعل وضع الاخفاء")
-                return None, None
-            user_obj = await event.client.get_entity(previous_message.sender_id)
-            return user_obj, extra
-        if not args:
-            if not noedits:
-                await edit_delete(
-                    jmthonevent, "- يجب عليك وضع ايدي او معرف المستخدم او بالرد عليه", 5
-                )
-            return None, None
-    except Exception as e:
-        LOGS.error(str(e))
-    if not noedits:
-        await edit_delete(jmthonevent, "- لم يتم التعرف على المستخدم")
-    return None, None
