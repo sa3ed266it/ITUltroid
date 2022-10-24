@@ -70,7 +70,7 @@ async def prmte(ult):
                 manage_call=True,
                 title=rank,
             )
-        await eod(
+        await eor(
             xx, get_string("pro_2").format(inline_mention(user), ult.chat.title, rank)
         )
     except Exception as ex:
@@ -102,7 +102,7 @@ async def dmote(ult):
             manage_call=None,
             title=rank,
         )
-        await eod(xx, get_string("de_2").format(inline_mention(user), ult.chat.title))
+        await eor(xx, get_string("de_2").format(inline_mention(user), ult.chat.title))
     except Exception as ex:
         return await xx.edit(f"`{ex}`")
 
@@ -134,7 +134,7 @@ async def bban(ult):
     text = get_string("ban_4").format(userme, senderme, ult.chat.title)
     if reason:
         text += get_string("ban_5").format(reason)
-    await eod(ult, text)
+    await eor(ult, text)
 
 
 @ultroid_cmd(
@@ -157,7 +157,7 @@ async def uunban(ult):
     try:
         await ult.client.edit_permissions(ult.chat_id, user.id, view_messages=True)
     except UserIdInvalidError:
-        return await eod(ult, get_string("adm_1"))
+        return await eor(ult, get_string("adm_1"))
     except BadRequestError:
         return await xx.edit(get_string("adm_2"))
     sender = inline_mention(await ult.get_sender())
