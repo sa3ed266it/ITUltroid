@@ -42,7 +42,7 @@ from . import (
     fullsudo=True,
 )
 async def prmte(ult):
-    xx = await ult.eor(get_string("com_1"))
+    xx = await ult.eod(get_string("com_1"))
     user, rank = await get_uinfo(ult)
     rank = rank or "Admin"
     FullRight = False
@@ -70,7 +70,7 @@ async def prmte(ult):
                 manage_call=True,
                 title=rank,
             )
-        await eod(
+        await eor(
             xx, get_string("pro_2").format(inline_mention(user), ult.chat.title, rank)
         )
     except Exception as ex:
@@ -85,7 +85,7 @@ async def prmte(ult):
     fullsudo=True,
 )
 async def dmote(ult):
-    xx = await ult.eor(get_string("com_1"))
+    xx = await ult.eod(get_string("com_1"))
     user, rank = await get_uinfo(ult)
     if not rank:
         rank = "Not Admin"
@@ -102,7 +102,7 @@ async def dmote(ult):
             manage_call=None,
             title=rank,
         )
-        await eod(xx, get_string("de_2").format(inline_mention(user), ult.chat.title))
+        await eor(xx, get_string("de_2").format(inline_mention(user), ult.chat.title))
     except Exception as ex:
         return await xx.edit(f"`{ex}`")
 
@@ -134,7 +134,7 @@ async def bban(ult):
     text = get_string("ban_4").format(userme, senderme, ult.chat.title)
     if reason:
         text += get_string("ban_5").format(reason)
-    await eod(ult, text)
+    await eor(ult, text)
 
 
 @ultroid_cmd(
