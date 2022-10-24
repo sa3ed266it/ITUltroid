@@ -42,7 +42,7 @@ from . import (
     fullsudo=True,
 )
 async def prmte(ult):
-    xx = await ult.eod(get_string("com_1"))
+    xx = await eod(get_string("com_1"))
     user, rank = await get_uinfo(ult)
     rank = rank or "Admin"
     FullRight = False
