@@ -42,7 +42,7 @@ from . import (
     fullsudo=True,
 )
 async def prmte(ult):
-    xx = await ult.eod(get_string("com_1"))
+    xx = await ult.eor(get_string("com_1"))
     user, rank = await get_uinfo(ult)
     rank = rank or "Admin"
     FullRight = False
@@ -85,7 +85,7 @@ async def prmte(ult):
     fullsudo=True,
 )
 async def dmote(ult):
-    xx = await ult.eod(get_string("com_1"))
+    xx = await ult.eor(get_string("com_1"))
     user, rank = await get_uinfo(ult)
     if not rank:
         rank = "Not Admin"
