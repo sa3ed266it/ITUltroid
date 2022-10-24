@@ -82,6 +82,7 @@ _gpromote_rights = ChatAdminRights(
     ban_users=True,
     delete_messages=True,
     pin_messages=True,
+    manage_call=True,
 )
 
 _gdemote_rights = ChatAdminRights(
@@ -91,6 +92,7 @@ _gdemote_rights = ChatAdminRights(
     ban_users=False,
     delete_messages=False,
     pin_messages=False,
+    manage_call=False,
 )
 
 
