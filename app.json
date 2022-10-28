@@ -45,11 +45,6 @@
             "description": "Name of your Heroku app, given in the first blank on this page. To be added if deploying to heroku ONLY.",
             "value": "",
             "required": false
-        },
-        "VCBOT": {
-            "description": "",
-            "value": "",
-            "required": false
         }
     },
     "formation": {
